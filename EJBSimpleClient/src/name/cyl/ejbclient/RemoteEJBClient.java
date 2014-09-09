@@ -19,7 +19,7 @@ public class RemoteEJBClient {
         final String beanName = "Ejb2";
         final String viewClassName = "name.cyl.ebj.Ejb2Remote";
 //        Ejb2Remote ejb2Remote= (Ejb2Remote) context.lookup("ejb:" + appName + "/" + moduleName + "/" + distinctName + "/" + beanName + "!" + viewClassName);
-        Ejb2Remote ejb2Remote= (Ejb2Remote) context.lookup("ejb:" + appName + "/" + moduleName + "/" + distinctName + "/" + beanName + "!" + viewClassName);
+        Ejb2Remote ejb2Remote= (Ejb2Remote) context.lookup("java:global/EAP1/EJB1/Ejb2");
         ejb2Remote.say();
         System.out.println(123);
 	}

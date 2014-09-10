@@ -1,8 +1,11 @@
 package name.cyl.servlet;
 
 import java.io.IOException;
+import java.util.Hashtable;
 
-import javax.ejb.EJB;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +21,29 @@ import name.cyl.ebj.Ejb2Remote;
 public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@EJB
-	private Ejb2Remote ejb2Remote;
-	
+	// @EJB
+	// private Ejb2Remote ejb2Remote;
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ejb2Remote.say();
+		Hashtable<String, String> jndiProperties = new Hashtable<String, String>();
+		jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+		try {
+			Context context = new InitialContext();
+			final String appName = "EAP1";
+			final String moduleName = "EJB1";
+			final String distinctName = "";
+			final String beanName = "Ejb2";
+			final String viewClassName = "name.cyl.ebj.Ejb2Remote";
+			Ejb2Remote ejb2Remote = (Ejb2Remote) context.lookup("ejb:" + appName + "/" + moduleName + "/" + distinctName + "/" + beanName + "!" + viewClassName);
+			ejb2Remote.say();
+			System.out.println(123);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

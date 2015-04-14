@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-client xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+  http://java.sun.com/xml/ns/javaee/application-client_6.xsd" version="6">
+
+	<display-name>EJBDemoClient</display-name>
+
+	<ejb-ref>
+		<ejb-ref-name>ejb/SayHello</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<remote>name.chenyuelin.ejb.demo.sample.SayHelloRemote</remote>
+	</ejb-ref>
+
+</application-client>

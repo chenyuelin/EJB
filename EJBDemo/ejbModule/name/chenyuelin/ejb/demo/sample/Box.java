@@ -6,7 +6,11 @@ import java.rmi.RemoteException;
 import javax.ejb.AfterBegin;
 import javax.ejb.BeforeCompletion;
 import javax.ejb.EJBException;
+import javax.ejb.Init;
+import javax.ejb.PostActivate;
+import javax.ejb.PrePassivate;
 import javax.ejb.Remote;
+import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
 /**
@@ -27,6 +31,11 @@ public class Box implements BoxRemote,Serializable {
         System.out.println("I'm box");
     }
 
+    @Init
+	public void init(){
+		System.out.println("init");
+	}
+    
 	@Override
 	public void add(int i) {
 		count+=i;
@@ -37,6 +46,23 @@ public class Box implements BoxRemote,Serializable {
 		return "Box [count=" + count + "]";
 	}
 
+	@PostActivate
+	public void postActivate(){
+		System.out.println("postActivate");
+	}
+	
+	@PrePassivate
+	public void prePassivate(){
+		System.out.println("prePassivate");
+	}
+	
+	@Remove
+	@Override
+	public void remove(){
+		System.out.println("Will remove.");
+	}
+	
+	//*********** SessionSynchronization *******************************
 	@AfterBegin
 	public void afterBegin() throws EJBException, RemoteException{
 		System.out.println("AfterBegin");

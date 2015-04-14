@@ -4,4 +4,6 @@ public interface BoxRemote {
 	public void add(int i);
 	
 	public String showStatus();
+	
+	public void remove();
 }

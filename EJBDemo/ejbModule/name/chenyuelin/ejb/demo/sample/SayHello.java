@@ -2,8 +2,9 @@ package name.chenyuelin.ejb.demo.sample;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.Init;
+import javax.annotation.Resource;
 import javax.ejb.Remote;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 
 /**
@@ -12,12 +13,8 @@ import javax.ejb.Stateless;
 @Stateless
 @Remote(SayHelloRemote.class)
 public class SayHello implements SayHelloRemote {
-
-	@Init
-	public void init(){
-		System.out.println("init");
-	}
-	
+	@Resource
+	private SessionContext sessionContext;
 	
 	@PostConstruct
 	public void construct(){
@@ -26,6 +23,7 @@ public class SayHello implements SayHelloRemote {
 	
 	@Override
 	public String say() {
+		sessionContext.setRollbackOnly();
 		return "Hello EveryBody!";
 	}
 

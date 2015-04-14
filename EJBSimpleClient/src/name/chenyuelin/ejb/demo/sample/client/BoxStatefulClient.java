@@ -19,10 +19,12 @@ public class BoxStatefulClient {
 			remote.add(10);
 			System.out.println(remote.showStatus());
 			
+			remote.remove();
+			
 			remote = (BoxRemote) context.lookup(path);
 			remote.add(10);
 			System.out.println(remote.showStatus());
-			
+			remote.remove();
 			
 		} catch (NamingException e) {
 			e.printStackTrace();

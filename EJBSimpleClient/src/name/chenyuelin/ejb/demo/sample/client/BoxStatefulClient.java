@@ -13,7 +13,8 @@ public class BoxStatefulClient {
 			Context context = new InitialContext();
 
 			String path = "ejb:EJBDemoEAR/EJBDemo/Box!name.chenyuelin.ejb.demo.sample.BoxRemote?stateful";
-
+			path="java:EJBDemoEAR/EJBDemo/Box!name.chenyuelin.ejb.demo.sample.BoxRemote";
+			
 			BoxRemote remote = (BoxRemote) context.lookup(path);
 			System.out.println(remote.showStatus());
 			remote.add(10);

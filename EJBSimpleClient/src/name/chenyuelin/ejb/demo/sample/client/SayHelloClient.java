@@ -14,12 +14,12 @@ public class SayHelloClient {
 
 			String path = "java:global/EJBDemoEAR/EJBDemo/SayHello";
 			path="ejb:EJBDemoEAR/EJBDemo//SayHello!name.chenyuelin.ejb.demo.sample.SayHelloRemote";
-			
 			path = "java:EJBDemoEAR/EJBDemo/SayHello!name.chenyuelin.ejb.demo.sample.SayHelloRemote";
 			
 			Object remote = context.lookup(path);
 			
 			SayHelloRemote sayHelloRemote=(SayHelloRemote)remote;
+			sayHelloRemote.close();
 			System.out.println(sayHelloRemote.say());
 		} catch (NamingException e) {
 			e.printStackTrace();

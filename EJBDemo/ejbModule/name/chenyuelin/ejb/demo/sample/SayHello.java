@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.Remote;
+import javax.ejb.Remove;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 
@@ -30,5 +31,10 @@ public class SayHello implements SayHelloRemote {
 	@PreDestroy
 	public void exist(){
 		System.out.println("exist");
+	}
+	
+	@Remove
+	public void close(){
+		System.out.println("Remove");
 	}
 }

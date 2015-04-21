@@ -3,6 +3,7 @@ package name.chenyuelin.ejb.demo.sample;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.AfterBegin;
 import javax.ejb.BeforeCompletion;
 import javax.ejb.EJBException;
@@ -24,12 +25,10 @@ public class Box implements BoxRemote,Serializable {
 	
 	private int count=0;
 	
-    /**
-     * Default constructor. 
-     */
-    public Box() {
-        System.out.println("I'm box");
-    }
+	@PostConstruct
+	public void construct(){
+		System.out.println("construct");
+	}
 
     @Init
 	public void init(){

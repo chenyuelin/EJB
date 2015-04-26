@@ -1,6 +1,12 @@
 package name.chenyuelin.ejb.demo.sample;
 
+import java.rmi.RemoteException;
+
+import javax.ejb.AfterBegin;
+import javax.ejb.AfterCompletion;
+import javax.ejb.BeforeCompletion;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
@@ -24,5 +30,18 @@ public class T1Service implements T1ServiceRemote {
 		return Transformer.toT1DTO(t1);
 	}
 
-
+	@AfterBegin
+	public void afterBegin() throws EJBException, RemoteException{
+		System.out.println("AfterBegin");
+	}
+	
+	@BeforeCompletion
+	public void beforeCompletion() throws EJBException, RemoteException{
+		System.out.println("beforeCompletion");
+	}
+	
+	@AfterCompletion
+	public void afterCompletion(boolean committed) throws EJBException, RemoteException{
+		System.out.println("afterCompletion");
+	}
 }

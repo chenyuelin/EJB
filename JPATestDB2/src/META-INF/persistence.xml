@@ -2,15 +2,15 @@
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="JPATestDB" transaction-type="JTA">
+	<persistence-unit name="JPATestDB2" transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>java:jboss/datasources/local/xatest</jta-data-source>
-		<class>name.chenyuelin.ejb.demo.sample.model.T1</class>
-		
+		<class>name.chenyuelin.ejb.demo.sample.model2.T2</class>
+
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode>
 		<validation-mode>NONE</validation-mode>
-		
+
 		<properties>
 			<property name="eclipselink.logging.level" value="INFO" />
 			<property name="eclipselink.logging.level.sql" value="ALL" />

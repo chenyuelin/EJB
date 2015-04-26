@@ -17,30 +17,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
-import name.chenyuelin.ejb.demo.sample.model.T1;
+import name.chenyuelin.ejb.demo.sample.model2.T2;
 
 /**
- * Session Bean implementation class T1EAO
+ * Session Bean implementation class T2EAO
  */
 @Stateful
 @LocalBean
-public class T1EAO {
+public class T2EAO {
 
-	@PersistenceContext(unitName="JPATestDB",type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(unitName="JPATestDB2",type=PersistenceContextType.EXTENDED)
     private EntityManager em;
 
-	public T1 getT1(int id){
-		return em.find(T1.class, (byte)id);
+	public T2 getT2(int id){
+		return em.find(T2.class, (byte)id);
 	}
-	
-	public T1 persist(String content){
-		T1 t1=new T1();
-		t1.setContent(content);
-		em.persist(t1);
+	public T2 persist(String name){
+		T2 t2=new T2();
+		t2.setName(name);
+		em.persist(t2);
 		em.flush();
-		return t1;
+		return t2;
 	}
-	
+
 	@AfterBegin
 	public void afterBegin() throws EJBException, RemoteException{
 		System.out.println("AfterBegin");

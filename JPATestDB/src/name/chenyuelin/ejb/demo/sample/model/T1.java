@@ -1,7 +1,9 @@
 package name.chenyuelin.ejb.demo.sample.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.sql.Time;
 import java.util.Date;
 
@@ -16,6 +18,7 @@ public class T1 implements Serializable {
 	private static final long serialVersionUID = 1214161527308496228L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private byte id;
 
 	private String content;

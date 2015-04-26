@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.AfterBegin;
+import javax.ejb.AfterCompletion;
 import javax.ejb.BeforeCompletion;
 import javax.ejb.EJBException;
 import javax.ejb.Init;
@@ -72,6 +73,7 @@ public class Box implements BoxRemote,Serializable {
 		System.out.println("beforeCompletion");
 	}
 	
+	@AfterCompletion
 	public void afterCompletion(boolean committed) throws EJBException, RemoteException{
 		System.out.println("afterCompletion");
 	}

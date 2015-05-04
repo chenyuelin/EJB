@@ -17,7 +17,7 @@ public class T2 implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private byte id;
+	private Integer id;
 
 	@Temporal(TemporalType.DATE)
 	private Date date;
@@ -27,11 +27,11 @@ public class T2 implements Serializable {
 	public T2() {
 	}
 
-	public byte getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(byte id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

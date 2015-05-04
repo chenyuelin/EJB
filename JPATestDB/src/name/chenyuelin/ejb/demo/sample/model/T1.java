@@ -19,7 +19,7 @@ public class T1 implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private byte id;
+	private Integer id;
 
 	private String content;
 
@@ -30,18 +30,18 @@ public class T1 implements Serializable {
 	private Date fild1;
 
 	@Column(name="parent_id")
-	private byte parentId;
+	private Integer parentId;
 
 	private Time timee;
 
 	public T1() {
 	}
 
-	public byte getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(byte id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -69,11 +69,11 @@ public class T1 implements Serializable {
 		this.fild1 = fild1;
 	}
 
-	public byte getParentId() {
+	public Integer getParentId() {
 		return this.parentId;
 	}
 
-	public void setParentId(byte parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
 

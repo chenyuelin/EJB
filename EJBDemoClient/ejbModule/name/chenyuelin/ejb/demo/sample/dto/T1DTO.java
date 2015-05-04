@@ -7,7 +7,7 @@ import java.util.Date;
 public class T1DTO implements Serializable{
 	private static final long serialVersionUID = 4948496571276572102L;
 
-	private byte id;
+	private Integer id;
 
 	private String content;
 
@@ -15,15 +15,15 @@ public class T1DTO implements Serializable{
 
 	private Date fild1;
 
-	private byte parentId;
+	private Integer parentId;
 
 	private Time timee;
 	
-	public byte getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(byte id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -51,11 +51,11 @@ public class T1DTO implements Serializable{
 		this.fild1 = fild1;
 	}
 
-	public byte getParentId() {
+	public Integer getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(byte parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
 

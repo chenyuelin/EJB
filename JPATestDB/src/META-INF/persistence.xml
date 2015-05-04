@@ -12,6 +12,20 @@
 		<validation-mode>NONE</validation-mode>
 		
 		<properties>
+			<!-- <property name="jboss.as.jpa.providerModule" value="org.eclipse.persistence" />
+			<property name="jboss.as.jpa.adapterModule" value="xxxxxx" />
+			<property name="jboss.as.jpa.adapterClass" value="org.eclipse.persistence.jpa.PersistenceProvider" />-->
+			
+			<property name="eclipselink.target-server" value="JBoss"/>
+			<!-- https://www.eclipse.org/eclipselink/documentation/2.5/jpa/extensions/p_target_server.htm#target-server
+			value="Default" -->
+			
+			<!-- 
+			Due to EclipseLink bug 383199, applications that use the static metamodel should set:
+			https://developer.jboss.org/wiki/HowToUseEclipseLinkWithAS7
+    		<property name="eclipselink.deploy-on-startup" value="True" />
+     		-->
+    
 			<property name="eclipselink.logging.level" value="INFO" />
 			<property name="eclipselink.logging.level.sql" value="ALL" />
 			<property name="eclipselink.logging.parameters" value="true" />

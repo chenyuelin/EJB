@@ -7,26 +7,20 @@ import javax.ejb.AfterCompletion;
 import javax.ejb.BeforeCompletion;
 import javax.ejb.EJBException;
 import javax.ejb.LocalBean;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 
 import name.chenyuelin.ejb.demo.sample.model.T1;
 
 /**
  * Session Bean implementation class T1EAO
  */
-@Stateful
+@Stateless
 @LocalBean
 public class T1EAO {
 
-	@PersistenceContext(unitName="JPATestDB",type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(unitName="JPATestDB")
     private EntityManager em;
 
 	public T1 getT1(int id){

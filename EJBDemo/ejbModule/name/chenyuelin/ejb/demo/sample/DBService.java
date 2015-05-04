@@ -10,13 +10,11 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.ejb.Remote;
 import javax.ejb.SessionContext;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
-import javax.transaction.UserTransaction;
 
 import name.chenyuelin.ejb.demo.sample.eao.T1EAO;
 import name.chenyuelin.ejb.demo.sample.eao.T2EAO;
@@ -28,32 +26,29 @@ import name.chenyuelin.ejb.demo.sample.model2.T2;
  */
 @Stateless
 @Remote(DBServiceRemote.class)
-@TransactionManagement(TransactionManagementType.BEAN)
+@TransactionManagement(TransactionManagementType.CONTAINER)
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class DBService implements DBServiceRemote {
 	@Resource
 	private SessionContext sc;
 
-	@Resource
-	private UserTransaction ut;
-	
-//	@EJB
-//	private T1EAO t1EAO;
-//
-//	@EJB
-//	private T2EAO t2EAO;
+	@EJB
+	private T1EAO t1EAO;
 
-	public int[] persist(String content, String name) {
+	@EJB
+	private T2EAO t2EAO;
+
+	public int[] persist(String content, String name) throws Exception{
 		try {
-			ut.begin();
-			T1EAO t1EAO=(T1EAO)sc.lookup("java:module/T1EAO");
 			T1 t1 = t1EAO.persist(content);
-			T2EAO t2EAO=(T2EAO)sc.lookup("java:module/T2EAO");
 			T2 t2 = t2EAO.persist(name);
-			ut.commit();
+			System.out.println(sc.getRollbackOnly());
+			sc.setRollbackOnly();
+			System.out.println(sc.getRollbackOnly());
 			return new int[] { t1.getId(), t2.getId() };
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			//sc.setRollbackOnly();
+			throw e;
 		}
 	}
 	

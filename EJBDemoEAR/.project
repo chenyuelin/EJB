@@ -5,6 +5,8 @@
 	<projects>
 		<project>EJBDemo</project>
 		<project>EJBDemoClient</project>
+		<project>JPATestDB</project>
+		<project>JPATestDB2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

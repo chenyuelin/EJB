@@ -8,5 +8,11 @@
         <dependent-module archiveName="EJBDemoClient.jar" deploy-path="/" handle="module:/resource/EJBDemoClient/EJBDemoClient">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="JPATestDB.jar" deploy-path="/lib" handle="module:/resource/JPATestDB/JPATestDB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="JPATestDB2.jar" deploy-path="/lib" handle="module:/resource/JPATestDB2/JPATestDB2">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

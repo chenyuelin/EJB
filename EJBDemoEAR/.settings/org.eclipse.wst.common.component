@@ -14,5 +14,8 @@
         <dependent-module archiveName="JPATestDB2.jar" deploy-path="/lib" handle="module:/resource/JPATestDB2/JPATestDB2">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="EJBDemo2Client.jar" deploy-path="/lib" handle="module:/resource/EJBDemo2Client/EJBDemo2Client">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

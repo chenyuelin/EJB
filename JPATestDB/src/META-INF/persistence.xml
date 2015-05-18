@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="JPATestDB" transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>java:jboss/datasources/local/xatest</jta-data-source>
+		<jta-data-source>java:jboss/datasources/xalocaltest</jta-data-source>
 		<class>name.chenyuelin.ejb.demo.sample.model.T1</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>

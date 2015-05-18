@@ -8,12 +8,16 @@ import javax.ejb.Remove;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 
+import org.jboss.logging.Logger;
+
 /**
  * Session Bean implementation class SayHello
  */
 @Stateless
 @Remote(SayHelloRemote.class)
 public class SayHello implements SayHelloRemote {
+	private static final Logger LOGGER=Logger.getLogger(SayHello.class);
+	
 	@Resource
 	private SessionContext sessionContext;
 	
@@ -24,7 +28,7 @@ public class SayHello implements SayHelloRemote {
 	
 	@Override
 	public String say() {
-		sessionContext.setRollbackOnly();
+		LOGGER.debug("say start.");
 		return "Hello EveryBody!";
 	}
 

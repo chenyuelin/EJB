@@ -15,6 +15,12 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.jws.soap.SOAPBinding.Style;
+import javax.jws.soap.SOAPBinding.Use;
+
+import org.jboss.logging.Logger;
 
 import name.chenyuelin.ejb.demo.sample.eao.T1EAO;
 import name.chenyuelin.ejb.demo.sample.eao.T2EAO;
@@ -28,7 +34,12 @@ import name.chenyuelin.ejb.demo.sample.model2.T2;
 @Remote(DBServiceRemote.class)
 @TransactionManagement(TransactionManagementType.CONTAINER)
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
+
+@WebService
+@SOAPBinding(style=Style.DOCUMENT,use=Use.ENCODED)
 public class DBService implements DBServiceRemote {
+	private static final Logger LOGGER=Logger.getLogger(DBService.class);
+	
 	@Resource
 	private SessionContext sc;
 
@@ -39,11 +50,12 @@ public class DBService implements DBServiceRemote {
 	private T2EAO t2EAO;
 
 	public int[] persist(String content, String name) throws Exception{
+		LOGGER.info("persist start.");
 		try {
 			T1 t1 = t1EAO.persist(content);
 			T2 t2 = t2EAO.persist(name);
 			System.out.println(sc.getRollbackOnly());
-			sc.setRollbackOnly();
+			//sc.setRollbackOnly();
 			System.out.println(sc.getRollbackOnly());
 			return new int[] { t1.getId(), t2.getId() };
 		} catch (Exception e) {

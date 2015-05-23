@@ -26,4 +26,8 @@ public class DestinationService implements DestinationServiceRemote {
 	public AgentDTO createAgent(String name){
 		return AgentTransformer.toAgentDTO(agentEAO.persist(name));
 	}
+	
+	public boolean updateAgent(byte id, String name){
+		return agentEAO.update(id, name);
+	}
 }

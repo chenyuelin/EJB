@@ -28,6 +28,16 @@ public class AgentEAO {
 		return agent;
 	}
 
+	public boolean update(byte id, String name) {
+		Agent agent = em.find(Agent.class, id);
+		if (agent == null) {
+			return false;
+		} else {
+			agent.setName(name);
+			return true;
+		}
+	}
+
 	public void flush() {
 		em.flush();
 	}

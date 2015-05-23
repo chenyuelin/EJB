@@ -6,6 +6,10 @@ public class AgentDTO implements Serializable {
 
 	private static final long serialVersionUID = 8306594856369419147L;
 	
+	private byte id;
+	
+	private String name;
+
 	public byte getId() {
 		return id;
 	}
@@ -22,7 +26,8 @@ public class AgentDTO implements Serializable {
 		this.name = name;
 	}
 
-	private byte id;
-
-	private String name;
+	@Override
+	public String toString() {
+		return "AgentDTO [id=" + id + ", name=" + name + "]";
+	}
 }

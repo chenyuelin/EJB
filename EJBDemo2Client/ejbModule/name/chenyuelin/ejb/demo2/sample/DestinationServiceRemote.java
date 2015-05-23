@@ -6,4 +6,6 @@ public interface DestinationServiceRemote {
 	public AgentDTO getAgent(byte id);
 	
 	public AgentDTO createAgent(String name);
+	
+	public boolean updateAgent(byte id, String name);
 }

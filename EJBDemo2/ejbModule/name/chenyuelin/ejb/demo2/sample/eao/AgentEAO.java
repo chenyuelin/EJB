@@ -34,6 +34,7 @@ public class AgentEAO {
 			return false;
 		} else {
 			agent.setName(name);
+			em.merge(agent);
 			return true;
 		}
 	}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="EJBDemoEAR" default="resolve" basedir=".">
+	<property name="ivy.default.ivy.user.dir" location="D:/.ivy2" />
+
+	<target name="resolve">
+		<ivy:resolve />
+	</target>
+</project>

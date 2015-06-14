@@ -28,7 +28,7 @@ public class SayHello implements SayHelloRemote {
 	
 	@Override
 	public String say() {
-		LOGGER.debug("say start.");
+		LOGGER.trace("say start.");
 		return "Hello EveryBody!";
 	}
 

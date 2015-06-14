@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+	<info organisation="chenyuelin" module="${ant.project.name}" revision="1.0.0-dev1"/>
+	<configurations>
+		<conf name="default" extends="master,runtime" />
+		<conf name="master" />
+		<conf name="compile" visibility="private" />
+		<conf name="provided" visibility="private" />
+		<conf name="runtime" extends="compile" />
+		<conf name="system" visibility="private" />
+		<conf name="test" extends="runtime" visibility="private" />
+		<conf name="sources" />
+		<conf name="javadoc" />
+	</configurations>
+	
+	<publications defaultconf="master">
+		<artifact/>
+		<artifact name="${ivy.module}" conf="sources" type="source" ext="zip"/>
+		<artifact name="${ivy.module}" conf="javadoc" type="javadoc" ext="zip"/>
+	</publications>
+	
+	<dependencies>
+		<dependency org="org.jboss.logging" name="jboss-logging" rev="3.1.4.GA" conf="sources" />
+		<dependency org="log4j" name="log4j" rev="1.2.17" conf="compile->master" />
+		<dependency org="log4j" name="apache-log4j-extras" rev="1.2.17" conf="compile->master" />
+	</dependencies>
+</ivy-module>

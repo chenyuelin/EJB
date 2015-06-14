@@ -14,7 +14,7 @@ public class SayHelloClient {
 
 			String path = "java:global/EJBDemoEAR/EJBDemo/SayHello";
 			path="ejb:EJBDemoEAR/EJBDemo//SayHello!name.chenyuelin.ejb.demo.sample.SayHelloRemote";
-			path = "java:EJBDemoEAR/EJBDemo/SayHello!name.chenyuelin.ejb.demo.sample.SayHelloRemote";
+			//path = "java:EJBDemoEAR/EJBDemo/SayHello!name.chenyuelin.ejb.demo.sample.SayHelloRemote";
 			
 			Object remote = context.lookup(path);
 			

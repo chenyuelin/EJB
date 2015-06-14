@@ -21,14 +21,15 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 import javax.naming.Context;
-
-import org.jboss.logging.Logger;
+import javax.transaction.TransactionManager;
 
 import name.chenyuelin.ejb.demo.sample.eao.T1EAO;
 import name.chenyuelin.ejb.demo.sample.eao.T2EAO;
 import name.chenyuelin.ejb.demo.sample.model.T1;
 import name.chenyuelin.ejb.demo.sample.model2.T2;
 import name.chenyuelin.ejb.demo2.sample.DestinationServiceRemote;
+
+import org.jboss.logging.Logger;
 
 /**
  * Session Bean implementation class DBService
@@ -55,31 +56,15 @@ public class DBService implements DBServiceRemote {
 	@EJB
 	private T2EAO t2EAO;
 
-	public int[] persist(String content, String name) throws Exception{
+	public int[] persist(String content, String name,byte id,String aname) throws Exception{
 		LOGGER.info("persist start.");
 		try {
-            final Hashtable props = new Hashtable();
-            // setup the ejb: namespace URL factory
-            props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-            // create the InitialContext
-            final Context context = new javax.naming.InitialContext(props);
- 
-            // Lookup the Greeter bean using the ejb: namespace syntax which is explained here https://docs.jboss.org/author/display/AS71/EJB+invocations+from+a+remote+client+using+JNDI
-            final DestinationServiceRemote bean = (DestinationServiceRemote) context.lookup("ejb:EJBDemoEAR2/EJBDemo2/DestinationService!name.chenyuelin.ejb.demo2.sample.DestinationServiceRemote");
- 
-            // invoke on the bean
-            System.out.println(bean.getAgent((byte)1));
- 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-		try {
-			T1 t1 = t1EAO.persist(content);
+			
 			T2 t2 = t2EAO.persist(name);
+			T1 t1 = t1EAO.persist(content);
+			System.out.println(destinationServiceRemote.updateAgent(id, aname));
+			sc.setRollbackOnly();
 			System.out.println(sc.getRollbackOnly());
-			//sc.setRollbackOnly();
-			System.out.println(sc.getRollbackOnly());
-			System.out.println(destinationServiceRemote.getAgent((byte)1));
 			return new int[] { t1.getId(), t2.getId() };
 		} catch (Exception e) {
 			//sc.setRollbackOnly();

@@ -21,6 +21,7 @@
 	
 	<dependencies>
 		<dependency org="org.jboss.logging" name="jboss-logging" rev="3.1.4.GA" conf="sources" />
+		<dependency org="org.picketbox" name="picketbox" rev="4.0.21.Final" conf="sources" />
 		<dependency org="log4j" name="log4j" rev="1.2.17" conf="compile->master" />
 		<dependency org="log4j" name="apache-log4j-extras" rev="1.2.17" conf="compile->master" />
 	</dependencies>
